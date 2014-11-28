@@ -71,6 +71,19 @@
                 </a>
             </section>
 
+            <!-- Uncomment this to add Google Plus comments to your posts. -->
+            <!--script src="https://apis.google.com/js/plusone.js"></script>
+            <div id="comments"></div>
+            <script>
+                gapi.comments.render('comments',
+                {
+                    href: '{{@blog.url}}{{url}}',
+                    width: document.getElementById('comments').clientWidth,
+                    first_party_property: 'BLOGGER',
+                    view_type: 'FILTERED_POSTMOD'
+                });
+            </script-->
+
         </footer>
 
     </article>
