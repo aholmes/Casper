@@ -1,8 +1,14 @@
-# Casper
+# Casper-aholmes
 
-The default theme for [Ghost](http://github.com/tryghost/ghost/).
+The default theme for [Ghost](http://github.com/tryghost/ghost/) with alterations.
 
-To download, visit the [releases](https://github.com/TryGhost/Casper/releases) page.
+Includes the following:
+
+* [Ace](http://ace.c9.io/) text editor
+* G+ comments
+* Google Analytics
+
+To download, visit the [releases](https://github.com/aholmes/Casper/releases) page.
 
 ## Copyright & License
 
