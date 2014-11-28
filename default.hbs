@@ -37,6 +37,31 @@
     {{! The main JavaScript file for Casper }}
     <script type="text/javascript" src="{{asset "js/jquery.fitvids.js"}}"></script>
     <script type="text/javascript" src="{{asset "js/index.js"}}"></script>
-
+    <script type="text/javascript" src="{{asset "js/ace-builds/src-min/ace.js"}}"></script>
+    <script>
+        $('pre code').each(function (i, el)
+        {
+            var newEl = document.createElement('CODE');
+            newEl.className = el.className + (el.className ? ' ' : '') + 'ace-editor';
+            newEl.innerHTML = el.innerHTML;
+            // the three-backticks syntax for code blocks in markdown allows you to specify the language name, which Ghost gets set as a class on the code element.
+            newEl.setAttribute('data-language', (el.className.match(/language-([^ ]+)/) || [, 'c_cpp'])[1]);
+            
+            var editor = ace.edit(newEl);
+            
+            editor.setOptions(
+            {
+                minLines: 1,
+                maxLines: 20
+            });
+            
+            // el.dataset only works in IE11. :(
+            // c_cpp is a safe bet for most languages I work with.
+            editor.session.setMode('ace/mode/' + newEl.getAttribute('data-language'));
+            
+            // Who needs <pre> when you have Ace? Replace the pre element with the newEl <code> element.
+            $(el.parentElement).replaceWith(editor.container);
+        });
+    </script>
 </body>
 </html>

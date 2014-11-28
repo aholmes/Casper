@@ -358,6 +358,35 @@ pre code, tt {
     padding: 0;
 }
 
+.ace-editor {
+    display: block;
+    width: 100%;
+    line-height: normal;
+    white-space: pre-wrap;
+    -ms-word-break: break-all;
+    word-break: break-all;
+    border-radius: 0;
+    padding: 0;
+}
+
+.ace-editor + p {
+    margin-top: 1.75em;
+}
+
+.ace-editor + h1,
+.ace-editor + h2,
+.ace-editor + h3,
+.ace-editor + h4,
+.ace-editor + h5,
+.ace-editor + h6 {
+    margin-top: 0.4em;
+}
+
+
+p + .ace-editor {
+    margin-top: -1.75em;
+}
+
 kbd {
     display: inline-block;
     margin-bottom: 0.4em;
