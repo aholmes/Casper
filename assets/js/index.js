@@ -190,14 +190,3 @@ function aceOnload()
 		$(el.parentElement).replaceWith(editor.container);
 	});
 };
-
-function gapiOnload()
-{
-	gapi.comments.render('comments',
-	{
-		href: '{{@blog.url}}{{url}}',
-		width: document.getElementById('comments').clientWidth,
-		first_party_property: 'BLOGGER',
-		view_type: 'FILTERED_POSTMOD'
-	});
-}

@@ -1375,14 +1375,6 @@ body:not(.post-template) .post-title {
     float: left;
 }
 
-
-#comments,
-#comments iframe {
-    /* Override the static width required to render the comments. */
-    width: 100% !important;
-}
-
-
 /* ==========================================================================
    10. Media Queries - Smaller than 900px
    ========================================================================== */
