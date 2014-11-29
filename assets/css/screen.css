@@ -928,6 +928,27 @@ body:not(.post-template) .post-title {
     margin: 0 -13%;
 }
 
+.linkable-header {
+	display: inline-block;
+	padding-right: 30px;
+}
+
+.header-link {
+	visibility: hidden;
+	padding-left: 10px;
+	vertical-align: middle;
+	font: normal  normal normal 16px/1 octicons;
+	opacity: 0.3;
+}
+
+.linkable-header:hover .header-link,
+.header-link:hover {
+	visibility: visible;
+}
+.linkable-header.active .header-link {
+	visibility: visible;
+	opacity: 1.0;
+}
 /* The author credit area after the post */
 .post-footer {
     position: relative;

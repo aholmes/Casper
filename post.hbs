@@ -72,16 +72,15 @@
             </section>
 
             <!-- Uncomment this to add Google Plus comments to your posts. -->
-            <script src="https://apis.google.com/js/plusone.js"></script>
             <div id="comments"></div>
             <script>
-                gapi.comments.render('comments',
-                {
-                    href: '{{@blog.url}}{{url}}',
-                    width: document.getElementById('comments').clientWidth,
-                    first_party_property: 'BLOGGER',
-                    view_type: 'FILTERED_POSTMOD'
-                });
+				(function ()
+				{
+					// Load G+ comments
+					var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+					po.src = 'https://apis.google.com/js/client:plusone.js?onload=gapiOnload';
+					var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+				})();
             </script>
 
         </footer>

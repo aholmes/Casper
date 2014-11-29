@@ -71,6 +71,20 @@
 
 		$(".scroll-down").arctic_scroll();
 
+		// Load Ace editor asynchronously and call the onload callback
+		$('script[data-src]').each(function (i,el)
+		{
+			var $el = $(el),
+				loadMethod = $el.data('onload');
+			if (loadMethod || typeof window[loadMethod] === 'function')
+			{
+				el.onload = window[loadMethod];
+			}
+
+			el.src = $el.data('src');
+		});
+
+		headerLinks();
 	});
 
 	// smartresize
@@ -113,3 +127,77 @@
 
 	};
 })(jQuery, 'smartresize');
+
+function headerLinks()
+{
+	var $currentActiveHeader = $.fn;
+
+	function setActiveHeader($el)
+	{
+		$currentActiveHeader.removeClass('active');
+		$currentActiveHeader = $el;
+		$currentActiveHeader.addClass('active');
+	}
+
+	// Make the headers on posts linkable
+	$('.post-content h1,.post-content h2,.post-content h3,.post-content h4,.post-content h5,.post-content h6').each(function (i, el)
+	{
+		var anchor = document.createElement('A'),
+			$el = $(el);
+
+		anchor.href = '#' + el.id;
+		anchor.className = 'header-link octicon octicon-link';
+
+		$el.addClass('linkable-header');
+
+		if (location.hash.substr(1) === el.id)
+		{
+			setActiveHeader($el);
+		}
+
+		$el.append(anchor);
+	});
+
+	$(window).on('hashchange', function ()
+	{
+		setActiveHeader($(window.location.hash));
+	});
+}
+
+function aceOnload()
+{
+	$('pre code').each(function (i, el)
+	{
+		var newEl = document.createElement('CODE');
+		newEl.className = el.className + (el.className ? ' ' : '') + 'ace-editor';
+		newEl.innerHTML = el.innerHTML;
+		// the three-backticks syntax for code blocks in markdown allows you to specify the language name, which Ghost gets set as a class on the code element.
+		newEl.setAttribute('data-language', (el.className.match(/language-([^ ]+)/) || [, 'c_cpp'])[1]);
+		
+		var editor = ace.edit(newEl);
+		
+		editor.setOptions(
+		{
+			minLines: 1,
+			maxLines: 20
+		});
+		
+		// el.dataset only works in IE11. :(
+		// c_cpp is a safe bet for most languages I work with.
+		editor.session.setMode('ace/mode/' + newEl.getAttribute('data-language'));
+		
+		// Who needs <pre> when you have Ace? Replace the pre element with the newEl <code> element.
+		$(el.parentElement).replaceWith(editor.container);
+	});
+};
+
+function gapiOnload()
+{
+	gapi.comments.render('comments',
+	{
+		href: '{{@blog.url}}{{url}}',
+		width: document.getElementById('comments').clientWidth,
+		first_party_property: 'BLOGGER',
+		view_type: 'FILTERED_POSTMOD'
+	});
+}
