@@ -16,7 +16,8 @@
 	<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/octicons/2.1.2/octicons.min.css" />
 	{{! ghost outputs important style and meta data with this tag }}
 	{{ghost_head}}
-	<script>
+	<!-- Uncomment this to enable Google Analytics. -->
+	<!--script>
 		(function (i, s, o, g, r, a, m)
 		{
 			i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function ()
@@ -26,9 +27,9 @@
 			m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
 		})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-		ga('create', 'UA-28406449-2', 'auto');
+		ga('create', 'CHANGE THIS TO YOUR KEY', 'auto');
 		ga('send', 'pageview');
-	</script>
+	</script-->
 </head>
 <body class="{{body_class}}">
 	{{! Everything else gets inserted here }}
@@ -42,6 +43,8 @@
 	{{! The main JavaScript file for Casper }}
 	<script type="text/javascript" src="{{asset "js/jquery.fitvids.js"}}"></script>
 	<script type="text/javascript" src="{{asset "js/index.js"}}"></script>
+
+	<!-- Uncomment this to load Ace editor. -->
 	<script data-src="{{asset "js/ace-builds/src-min/ace.js"}}" data-onload="aceOnload"></script>
 </body>
 </html>
