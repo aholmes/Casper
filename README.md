@@ -9,6 +9,7 @@ Includes the following:
 * Disqus comments
 * Google Analytics
 * Linkable headers in your posts
+* Fixed position header and footer on all pages
 
 To download, visit the [releases](https://github.com/aholmes/Casper/releases) page.
 
