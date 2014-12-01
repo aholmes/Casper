@@ -6,11 +6,15 @@ Includes the following:
 
 * [Ace](http://ace.c9.io/) text editor
 * G+ comments
+* Disqus comments
 * Google Analytics
+* Linkable headers in your posts
 
 To download, visit the [releases](https://github.com/aholmes/Casper/releases) page.
 
 To enable G+ comments, open post.hbs and uncomment the code after `<!-- Uncomment this to add Google Plus comments to your posts. -->`.
+
+To enable Disqus comments, open post.hbs and uncomment the code after `<!-- Uncomment this to add Disqus comments to your posts. -->`.
 
 To enable Google Analytics, open default.hbs and uncomment the code after `<!-- Uncomment this block and change your UA key to use Google Analytics. -->`. You will also need to replace "CHANGE THIS TO YOUR KEY" with your own Google Analytics UA key.
 
