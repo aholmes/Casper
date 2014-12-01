@@ -499,15 +499,30 @@ margin on the iframe, cause it breaks stuff. */
 
 /* Big cover image on the home page */
 .main-header {
+	z-index: 0; /* Set up an overflow context to allow the main.content div to overflow the header */
     position: relative;
     display: table;
     width: 100%;
-    height: 100%;
-    margin-bottom: 5rem;
+    height: 70%;
+    margin-bottom: 0;
     text-align: center;
     background: #222 no-repeat center center;
     background-size: cover;
     overflow: hidden;
+}
+
+.main-header .header-content {
+	z-index: -1; /* Prevent .header-content from scrolling with parent overflow context,
+		and place below all other elements. */
+	position: fixed;
+	display: inherit;
+	height: inherit;
+	max-height: inherit;
+	min-height: inherit;
+	width: 100%;
+	background: inherit;
+	background-size: inherit;
+	background-position: 0 100%;
 }
 
 .main-header .inner {
@@ -523,6 +538,21 @@ margin on the iframe, cause it breaks stuff. */
 .main-nav a {
     text-decoration: none;
     font-family: 'Open Sans', sans-serif;
+}
+
+.main-header + .content
+{
+	position: relative;
+	padding-bottom: 1rem;
+	margin-bottom: 5.8rem;
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	-o-transform: translateZ(0);
+	transform: translateZ(0);
+	padding-top: 5rem;
+	background-color: #fff;
+	box-shadow: 0 0 2em rgba(0, 0, 0, 0.5);
 }
 
 /* Create a bouncing scroll-down arrow on homepage with cover image */
@@ -554,7 +584,7 @@ margin on the iframe, cause it breaks stuff. */
 
 /* Put a semi-opaque radial gradient behind the icon to make it more visible
    on photos which happen to have a light background. */
-.home-template .main-header:after {
+.home-template .main-header .header-content:after {
     display: block;
     content: " ";
     width: 150px;
@@ -576,6 +606,10 @@ margin on the iframe, cause it breaks stuff. */
 .archive-template .scroll-down,
 .archive-template .main-header:after {
     display: none
+}
+
+.no-cover.main-header .header-content {
+	height: 100%;
 }
 
 /* Appears in the top right corner of your home page */
@@ -710,7 +744,7 @@ margin on the iframe, cause it breaks stuff. */
 
 .no-cover.main-header {
     min-height: 160px;
-    max-height: 40%;
+    max-height: 60%;
     background: #f5f8fa;
 }
 
@@ -747,7 +781,8 @@ margin on the iframe, cause it breaks stuff. */
     position: relative;
     width: 80%;
     max-width: 710px;
-    margin: 4rem auto;
+    margin: 0 auto;
+	padding-top: 4rem;
     padding-bottom: 4rem;
     border-bottom: #EBF2F6 1px solid;
     word-break: break-word;
@@ -1089,29 +1124,31 @@ body:not(.post-template) .post-title {
 }
 
 .no-cover.post-head.main-header {
-    height: 85px;
+    height: 137px;
     min-height: 0;
     margin-bottom: 0;
     background: transparent;
 }
 
 .tag-head.main-header {
-    height: 40%;
+	height: 40%;
     min-height: 180px;
 }
 
 .author-head.main-header {
-    height: 40%;
     min-height: 180px;
 }
 
 .no-cover.author-head.main-header {
-    height: 10%;
     min-height: 100px;
     background: transparent;
 }
 
 .author-profile {
+	position: absolute;
+	top: 25%;
+	right: 0;
+	left: 0;
     padding: 0 15px 5rem 15px;
     border-bottom: #EBF2F6 1px solid;
     text-align: center;
@@ -1321,14 +1358,21 @@ body:not(.post-template) .post-title {
    ========================================================================== */
 
 .site-footer {
-    position: relative;
+	z-index: -1;
+    position: fixed;
+	bottom: 0;
+	width: 100%;
     margin: 8rem 0 0 0;
-    padding: 0.5rem 15px;
+    padding: 0.5rem 0;
     border-top: #EBF2F6 1px solid;
     font-family: "Open Sans", sans-serif;
     font-size: 1rem;
     line-height: 1.75em;
     color: #BBC7CC;
+}
+
+.site-footer section {
+	padding: 0 15px;
 }
 
 .site-footer a {
@@ -1380,14 +1424,12 @@ body:not(.post-template) .post-title {
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
-        height: auto;
         min-height: 240px;
         height: 60%;
-        padding: 15% 0;
     }
 
     .scroll-down,
-    .home-template .main-header:after { display: none; }
+    .home-template .main-header .header-content:after { display: none; }
 
     .archive-template .main-header {
         min-height: 180px;
@@ -1469,11 +1511,6 @@ body:not(.post-template) .post-title {
         height:45%;
     }
 
-    .tag-head.main-header,
-    .author-head.main-header {
-        height: 30%;
-    }
-
     .no-cover.post-head.main-header {
         height: 55px;
         padding: 0;
@@ -1493,12 +1530,11 @@ body:not(.post-template) .post-title {
 @media only screen and (max-width: 500px) {
 
     .main-header {
-        margin-bottom: 15px;
         height: 40%;
     }
 
     .no-cover.main-header {
-        height: 30%;
+        height: 60%;
     }
 
     .archive-template .main-header {
@@ -1510,7 +1546,6 @@ body:not(.post-template) .post-title {
     .main-nav {
         padding: 0;
         margin-bottom: 2rem;
-        border-bottom: #e0e4e7 1px solid;
     }
 
     .blog-logo {
@@ -1727,11 +1762,6 @@ body:not(.post-template) .post-title {
 
     .post-head.main-header {
         height: 30%;
-    }
-
-    .tag-head.main-header,
-    .author-head.main-header {
-        height: 20%;
     }
 
     .author-profile .author-image {

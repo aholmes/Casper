@@ -78,7 +78,7 @@
         allOptions.elem.click(function (event) {
             event.preventDefault();
             var $this = $(this),
-                $htmlBody = $('html, body'),
+                $htmlBody = $('body'),
                 offset = ($this.attr('data-offset')) ? $this.attr('data-offset') : false,
                 position = ($this.attr('data-position')) ? $this.attr('data-position') : false,
                 toMove;
