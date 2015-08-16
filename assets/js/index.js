@@ -105,7 +105,7 @@
         allOptions.elem.click(function (event) {
             event.preventDefault();
             var $this = $(this),
-                $htmlBody = $('body'),
+                $htmlBody = $('html, body'),
                 offset = ($this.attr('data-offset')) ? $this.attr('data-offset') : false,
                 position = ($this.attr('data-position')) ? $this.attr('data-position') : false,
                 toMove;
@@ -189,3 +189,14 @@ function aceOnload()
 		$(el.parentElement).replaceWith(editor.container);
 	});
 };
+
+function gapiOnload()
+{
+	gapi.comments.render('comments',
+	{
+		href: '{{@blog.url}}{{url}}',
+		width: document.getElementById('comments').clientWidth,
+		first_party_property: 'BLOGGER',
+		view_type: 'FILTERED_POSTMOD'
+	});
+}

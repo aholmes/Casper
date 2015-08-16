@@ -28,17 +28,6 @@
 
         <section class="post-content">
             {{content}}
-
-            <div class="post-footer">
-                Need additional help? Consider contacting me on <a href="https://www.codementor.io/aholmes"><img src="https://cdn.codementor.io/badges/book_session_github.svg" alt="Book session on Codementor" style="display:inline;margin:0;vertical-align:middle;" /></a>
-                <br/>
-                Did I make your day better? Consider sending me a buck or two. <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="display:inline;vertical-align:middle;">
-                    <input type="hidden" name="cmd" value="_s-xclick">
-                    <input type="hidden" name="hosted_button_id" value="658VF74EJ53G2">
-                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                    <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1" style="display:inline;">
-                </form>
-            </div>
         </section>
 
         <footer class="post-footer">
@@ -84,16 +73,30 @@
                 </a>
             </section>
 
-			<div id="disqus_thread"></div>
+            <!-- Uncomment this to add Google Plus comments to your posts. -->
+            <!--div id="comments"></div>
+            <script>
+				(function ()
+				{
+					// Load G+ comments
+					var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+					po.src = 'https://apis.google.com/js/client:plusone.js?onload=gapiOnload';
+					var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+				})();
+            </script-->
+
+			<!-- Uncomment this to add Disqus comments to your posts. -->
+			<!--div id="disqus_thread"></div>
 			<script type="text/javascript">
-				var disqus_shortname = 'aholmes';
+				var disqus_shortname = 'REPLACE WITH DISQUS FORUM NAME';
 				(function ()
 				{
 					var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
 					dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
 					(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 				})();
-			</script>
+			</script-->
+
 
         </footer>
 
